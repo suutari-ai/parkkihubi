@@ -394,7 +394,6 @@ paths:
                 properties:
                   << : *paginatedResult
                   results:
-                    type: array
                     items:
                       $ref: '#/components/schemas/Operator'
   /operator/{operator_id}/:
@@ -436,7 +435,6 @@ paths:
                 properties:
                   << : *paginatedResult
                   results:
-                    type: array
                     items:
                       $ref: '#/components/schemas/PermitSeries'
     post:
@@ -528,7 +526,6 @@ paths:
                 properties:
                   << : *paginatedResult
                   results:
-                    type: array
                     items:
                       $ref: '#/components/schemas/Permit'
     post:
@@ -678,7 +675,6 @@ paths:
                 properties:
                   << : *paginatedResult
                   results:
-                    type: array
                     items:
                       $ref: '#/components/schemas/Permit'
     post:
