@@ -697,10 +697,11 @@ paths:
       operationId: getPermitSeriesDetails
       security: [{ApiKey: []}]
       parameters:
-        - name: permitseries_id
+        - &permitSeriesParamId
+          name: permitseries_id
           in: path
           description: >-
-            Id of permit series
+            Id of the permit series
           schema:
             type: string
           required: true
@@ -713,6 +714,22 @@ paths:
                 $ref: '#/components/schemas/PermitSeries'
         '404':
           $ref: '#/components/responses/NotFound'
+    delete:
+      tags: ['Permit Series']
+      summary: Delete a permit series
+      operationId: deletePermitSeries
+      security: [{ApiKey: []}]
+      parameters:
+        - << : *permitSeriesParamId
+      responses:
+        '204':
+          description: The permit series was deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
   /permitseries/{permitseries_id}/activate/:
     post:
       tags: ['Permit Series']
@@ -720,13 +737,7 @@ paths:
       operationId: activatePermitSeries
       security: [{ApiKey: []}]
       parameters:
-        - name: permitseries_id
-          in: path
-          description: >-
-            Id of the permit series
-          schema:
-            type: integer
-          required: true
+        - << : *permitSeriesParamId
       responses:
         '200':
           description: Activation succeeded
@@ -803,10 +814,11 @@ paths:
       operationId: getPermitDetails
       security: [{ApiKey: []}]
       parameters:
-      - name: permit_id
+      - &permitParamId
+        name: permit_id
         in: path
         description: >-
-          Id of permit
+          Id of the permit
         schema:
           type: integer
         required: true
@@ -827,12 +839,7 @@ paths:
       operationId: replacePermit
       security: [{ApiKey: []}]
       parameters:
-      - name: permit_id
-        in: path
-        required: true
-        description: Id of permit to update
-        schema:
-          type: integer
+        - << : *permitParamId
       requestBody:
         required: true
         content:
@@ -860,12 +867,7 @@ paths:
       operationId: updatePermit
       security: [{ApiKey: []}]
       parameters:
-        - name: permit_id
-          in: path
-          description: Id of permit to update
-          required: true
-          schema:
-            type: integer
+        - << : *permitParamId
       requestBody:
         content:
           application/json:
@@ -883,6 +885,22 @@ paths:
                 $ref: '#/components/schemas/Permit'
         '400':
           $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: ['Permits']
+      summary: Delete a permit
+      operationId: deletePermit
+      security: [{ApiKey: []}]
+      parameters:
+        - << : *permitParamId
+      responses:
+        '204':
+          description: The permit was deleted successfully
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -941,10 +959,11 @@ paths:
       operationId: getActivePermit
       security: [{ApiKey: []}]
       parameters:
-        - name: external_id
+        - &permitParamExternalId
+          name: external_id
           in: path
           description: >-
-            External id of permit
+            External id of the permit
           schema:
             type: string
           required: true
@@ -965,12 +984,7 @@ paths:
       operationId: updateActivePermit
       security: [{ApiKey: []}]
       parameters:
-        - name: external_id
-          in: path
-          description: External id of the permit to update
-          required: true
-          schema:
-            type: string
+        - << : *permitParamExternalId
       requestBody:
         required: true
         content:
@@ -1003,12 +1017,7 @@ paths:
       operationId: replaceActivePermit
       security: [{ApiKey: []}]
       parameters:
-        - name: external_id
-          in: path
-          description: External id of permit to update
-          required: true
-          schema:
-            type: string
+        - << : *permitParamExternalId
       requestBody:
         required: true
         content:
@@ -1024,6 +1033,22 @@ paths:
                 $ref: '#/components/schemas/Permit'
         '400':
           $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: ['Active Permits by External Id']
+      summary: Delete a permit from the active series
+      operationId: deleteActivePermit
+      security: [{ApiKey: []}]
+      parameters:
+        - << : *permitParamExternalId
+      responses:
+        '204':
+          description: The permit was deleted successfully
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
