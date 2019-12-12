@@ -248,6 +248,11 @@ components:
         id:
           description: Unique identifier of the permit object
           type: integer
+        domain: &permitDomain
+          description: >-
+            Code of the enforcement domain that is allowed
+            to see the permit.
+          type: string
         external_id: &permitExternalId
           description: External id of the permit
           type: string
@@ -600,8 +605,12 @@ paths:
                     terminal_number:
                       description: Payment terminal number
                       type: string
+                    domain:
+                      description: Code of the enforcement domain
+                      type: string
                   required:
                     - terminal_number
+                    - domain
       responses:
         '200':
           description: Parking spot information query succeeded
@@ -750,6 +759,8 @@ paths:
               properties: &permitProperties
                 series:
                   << : *permitSeries
+                domain:
+                  << : *permitDomain
                 external_id:
                   << : *permitExternalId
                 subjects:
@@ -904,6 +915,8 @@ paths:
             schema:
               type: object
               properties:
+                domain:
+                  << : *permitDomain
                 external_id:
                   description: External id of the permit
                   type: string
@@ -958,6 +971,8 @@ paths:
             schema:
               type: object
               properties:
+                domain:
+                  << : *permitDomain
                 subjects:
                   << : *permitSubjects
                 areas:
