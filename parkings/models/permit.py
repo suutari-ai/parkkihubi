@@ -90,6 +90,9 @@ class PermitQuerySet(models.QuerySet):
 
 
 class Permit(TimestampedModelMixin, models.Model):
+    domain = models.ForeignKey(
+        EnforcementDomain, on_delete=models.PROTECT,
+        related_name='permits')
     series = models.ForeignKey(PermitSeries, on_delete=models.PROTECT)
     external_id = models.CharField(max_length=50, null=True, blank=True)
     subjects = CleaningJsonField(blank=True, validators=[DictListValidator({
