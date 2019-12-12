@@ -351,7 +351,8 @@ components:
                 format: uri
               results:
                 type: array
-                items: any
+                items:
+                  type: object
     BadRequest:  # 400
       description: Bad request, details in request body
       content:
