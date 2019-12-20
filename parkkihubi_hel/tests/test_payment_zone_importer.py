@@ -1,12 +1,12 @@
 import os
 
-from parkings.importers import PaymentZoneImporter
+from ..importers import PaymentZoneImporter
 
 mydir = os.path.dirname(__file__)
 
 
 def test_payment_zone_importer():
-    filename = os.path.join(mydir, 'payment_zone_importer_data.xml')
+    filename = os.path.join(mydir, '../../parkings/tests/payment_zone_importer_data.xml')
     importer = PaymentZoneImporter()
     with open(filename, 'rb') as fp:
         data = importer._parse_response(fp.read())
