@@ -3,7 +3,7 @@ import os
 from ..importers import ParkingAreaImporter
 
 mydir = os.path.dirname(__file__)
-sample_xml_file = os.path.join(mydir, '../../parkings/tests/parking_area_importer_data.xml')
+sample_xml_file = os.path.join(mydir, 'parking_area_importer_data.xml')
 
 
 def test_parse_response():

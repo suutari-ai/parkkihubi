@@ -6,7 +6,7 @@ mydir = os.path.dirname(__file__)
 
 
 def test_permit_area_importer():
-    filename = os.path.join(mydir, '../../parkings/tests/permit_area_importer_data.xml')
+    filename = os.path.join(mydir, 'permit_area_importer_data.xml')
     importer = PermitAreaImporter()
     with open(filename, 'rb') as fp:
         data = importer._parse_response(fp.read())
