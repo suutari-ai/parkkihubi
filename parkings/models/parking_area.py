@@ -108,6 +108,11 @@ class ParkingArea(TimestampedModelMixin, UUIDPrimaryKeyMixin):
     def __str__(self):
         return 'Parking Area %s' % str(self.origin_id)
 
+    def save(self, *args, **kwargs):
+        if not self.domain:
+            self.domain = EnforcementDomain.get_default_domain()
+        super().save(*args, **kwargs)
+
     @property
     def estimated_capacity(self):
         """
