@@ -28,3 +28,6 @@ Multicity TODO
   deactivate operator series
 
   - test cases for permit series deactivation
+
+* Make sure that default domain is not used for PermitAreas and other
+  such objects (only for Parkings)
