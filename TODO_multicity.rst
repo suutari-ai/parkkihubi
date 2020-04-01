@@ -31,3 +31,7 @@ Multicity TODO
 
 * Make sure that default domain is not used for PermitAreas and other
   such objects (only for Parkings)
+
+* What to do with dashboard regarding multicity?
+
+* What to do with public API regarding multicity?
