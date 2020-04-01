@@ -35,3 +35,6 @@ Multicity TODO
 * What to do with dashboard regarding multicity?
 
 * What to do with public API regarding multicity?
+
+* Are enforcer limitations even implemented yet? (Can Helsinki see Espoo
+  or vice versa?)
