@@ -3,12 +3,12 @@ Multicity TODO
 
 * Make domain not required and update the migrations to run faster
 
-* Enforcement API PermitSeries activate endpoint is pruning too much
+* Is Enforcement API PermitSeries activate endpoint pruning too much?
 
-  - Line ``prunable_series = PermitSeries.objects.prunable()`` is
-    incorrect in api/enforcement/permit.py.  It should be limited to the
-    owned PermitSeries only.
-  
+  - First thought that pruning should be limited to the permit series of
+    the current user, but maybe it's OK to prune *all* inactive permit
+    series after the three days, but that just have to be documented.
+
 * Make PermitLookupItem.area a FK instead of char field
 
   - Change the PermitArea.id field to be integer rather than UUID
